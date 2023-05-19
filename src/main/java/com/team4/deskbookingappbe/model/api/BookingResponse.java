@@ -9,7 +9,7 @@ import lombok.Data;
 public class BookingResponse {
     @Schema(description = "Reservations id", example = "1")
     private Long reservationId;
-    @Schema(description = "User email", example = "belekas@swed")
+    @Schema(description = "User email", example = "belekas@bankas")
     private String userEmail;
     @Schema(description = "Desk id", example = "3")
     private Long deskId;
@@ -19,8 +19,8 @@ public class BookingResponse {
     private Long roomId;
     @Schema(description = "Room name", example = "Room 420")
     private String roomName;
-    @Schema(description = "Reservations start", example = "2022-04-20 15:00:00")
+    @Schema(description = "Reservations start", example = "2023-04-20 15:00:00")
     private String reservationStart;
-    @Schema(description = "Reservations end", example = "2022-04-20 16:00:00")
+    @Schema(description = "Reservations end", example = "2023-04-20 16:00:00")
     private String reservationEnd;
 }
