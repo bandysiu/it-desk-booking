@@ -4,7 +4,9 @@ import com.team4.deskbookingappbe.model.api.CreateReservationsRequest;
 import com.team4.deskbookingappbe.model.domain.DtoReservations;
 import com.team4.deskbookingappbe.repository.ReservationsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -20,6 +22,12 @@ public class ReservationsService {
     }
 
     public DtoReservations createReservation(CreateReservationsRequest request){
+        if(Timestamp.valueOf(request.getReservationStart()).after(Timestamp.valueOf(request.getReservationEnd()))) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST
+            );
+        }
+
         DtoReservations reservation = DtoReservations.builder()
                 .userEmail(request.getUserEmail())
                 .deskId(request.getDeskId())
